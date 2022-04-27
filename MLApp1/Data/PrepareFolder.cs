@@ -64,7 +64,7 @@ public class PrepareFolder
                         }
                     }
 
-                    var destination = Path.Combine(labelFolder, Path.GetDirectoryName(file).Split('\\').Last() + '.' + Path.GetFileNameWithoutExtension(image) + '.' + count + ".jpg");
+                    var destination = Path.Combine(labelFolder, Path.GetDirectoryName(file)?.Split('\\').Last() + '.' + Path.GetFileNameWithoutExtension(image) + '.' + count + ".jpg");
 
                     Console.WriteLine($"Moving to: {destination}");
                     File.Move(image, destination, true);
