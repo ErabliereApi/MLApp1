@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MLApp1": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "COMPlus_gcAllowVeryLargeObjects": "1"
+      }
+    }
+  }
+}
