@@ -34,4 +34,4 @@ To configure the API url to match your environment change the static variable in
 
 ## Setup the data source
 
-This app analyse images from DAT file on a hard drive mount on V:. Those DAT file was saved there by a Smoonet camera system so the folder structure and the file name is as store by the camera recorder.
+This app analyse images from DAT file on a hard drive mount on V:. Those DAT file was saved there by a Smonet camera system so the folder structure and the file name is as store by the camera recorder.
