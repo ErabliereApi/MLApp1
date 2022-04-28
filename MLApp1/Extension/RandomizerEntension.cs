@@ -3,7 +3,7 @@
 namespace MLApp1.Extension;
 public static class RandomizerEntension
 {
-    public static T[] Suffle<T>(this T[] array)
+    public static T[] Shuffle<T>(this T[] array)
     {
         int n = array.Length;
         while (n > 1)

@@ -7,9 +7,13 @@ public class PrepareFolder
 {
     public static async Task PreparerFolderAsync(string assetsRelativePath, string workspaceRelativePath, int limit, System.Collections.Concurrent.ConcurrentQueue<string>? queue = null)
     {
-        var directories = Directory.GetDirectories(assetsRelativePath).Suffle();
+        var directories = Directory.GetDirectories(assetsRelativePath)
+                                   .Shuffle();
 
-        var count = Directory.GetDirectories(workspaceRelativePath).Select(d => Directory.GetFiles(d).Length).DefaultIfEmpty(0).Sum();
+        var count = Directory.GetDirectories(workspaceRelativePath)
+                             .Where(d => d.EndsWith("Dompeux") || d.EndsWith("Bassin"))
+                             .Select(d => Directory.GetFiles(d).Length)
+                             .DefaultIfEmpty(0).Sum();
 
         if (count >= limit)
         {
@@ -36,7 +40,7 @@ public class PrepareFolder
         {
             string? d = directories[i];
 
-            var files = Directory.EnumerateFiles(d).ToArray().Suffle();
+            var files = Directory.EnumerateFiles(d).ToArray().Shuffle();
 
             foreach (var file in files)
             {
