@@ -9,7 +9,7 @@ var options = new MLAppOptions
 };
 
 options.WorkspacePath = Path.Combine(options.ProjectDirectory, "workspace");
-options.AssetsRelativePath = Path.Combine(@"C:\Users\jacqu\source\repos\MLApp1\MLApp1\workspace\Dompeux\");
+options.AssetsRelativePath = Path.Combine("V:\\");
 options.Temp = Path.Combine(options.ProjectDirectory, "Temp");
 
 Directory.CreateDirectory(options.WorkspacePath);
@@ -26,7 +26,8 @@ do
     Console.WriteLine("2. Train a model");
     Console.WriteLine("3. Classify images");
     Console.WriteLine("4. Classify image folder using image2text api");
-    Console.WriteLine("5. Edit options");
+    Console.WriteLine("5. Classify image using ML.Net");
+    Console.WriteLine("6. Edit options");
     Console.WriteLine("0. Quit");
     Console.Write(">>> ");
 
@@ -49,6 +50,9 @@ do
                 await ClassifyFolder.ClassifyFolderUsingImge2Text(options.AssetsRelativePath, options.WorkspacePath);
                 break;
             case "5":
+                await ClassifyWorkflow.ClassifyNewImagesUsingMlNet(options, 1000);
+                break;
+            case "6":
                 EditOptions(options);
                 break;
             case "0":
