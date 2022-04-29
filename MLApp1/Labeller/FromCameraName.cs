@@ -7,8 +7,8 @@ public class FromCameraName : ILabeller
 {
     public async Task<string> GetLabelAsync(Image data)
     {
-        var subImage = new Bitmap(data).Clone(
-            new Rectangle(34, 10, 106, 34), data.PixelFormat);
+        using var imageData = new Bitmap(data);
+        using var subImage = imageData.Clone(new Rectangle(34, 10, 73, 30), data.PixelFormat);
 
         for (int i = 0; i < subImage.Width; i++)
         {
@@ -16,7 +16,7 @@ public class FromCameraName : ILabeller
             {
                 var pixel = subImage.GetPixel(i, j);
 
-                if (pixel.R <= 100)
+                if (pixel.R <= 255 / 2)
                 {
                     subImage.SetPixel(i, j, Color.White);
                 }
@@ -34,6 +34,17 @@ public class FromCameraName : ILabeller
 
         var s = await response.Content.ReadAsStringAsync();
 
-        return s.Trim();
+        var t = s.Trim().ToUpper();
+
+        //try
+        //{
+        //    subImage.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Temp", Guid.NewGuid().ToString() + ".jpg"));
+        //}
+        //catch (Exception ex)
+        //{
+        //    Console.Error.WriteLine(ex);
+        //}
+
+        return t;
     }
 }

@@ -13,11 +13,12 @@ namespace LabellerImage.Test;
 public class ImageCameraLabeller
 {
     private ILabeller _labeller = new FromCameraName()
+        .WithoutInvalidFileSystemCharacter()
         .WithLabelMapping(new System.Collections.Generic.Dictionary<string, string>
         {
             { "CAML", "CAM1" },
-            { "CAMa ET", "CAM3" },
-            { "CAMs", "CAM4" }
+            { "CAME", "CAM3" },
+            { "CAMS", "CAM3" }
         });
 
     [Theory]

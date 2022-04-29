@@ -6,23 +6,8 @@ using static Microsoft.ML.DataOperationsCatalog;
 namespace MLApp1;
 public static class TrainWorkflow
 {
-    public static async Task TrainWorkflowAsync()
+    public static async Task TrainWorkflowAsync(string workspacePath)
     {
-        Console.WriteLine(Environment.GetEnvironmentVariable("COMPlus_gcAllowVeryLargeObjects"));
-
-        var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
-        var workspaceRelativePath = Path.Combine(projectDirectory, "workspace");
-        var assetsRelativePath = Path.Combine("V:\\");
-
-        Directory.CreateDirectory(workspaceRelativePath);
-
-        if (Directory.Exists(Path.Combine(projectDirectory, "Temp")))
-        {
-            Directory.Delete(Path.Combine(projectDirectory, "Temp"), true);
-        }
-
-        // await PrepareFolder.PreparerFolderAsync(assetsRelativePath, workspaceRelativePath, 100);
-
         MLContext mlContext = new MLContext();
 
         IEnumerable<ImageData> LoadImagesFromDirectory(string folder)
@@ -42,7 +27,7 @@ public static class TrainWorkflow
                      });
         }
 
-        IEnumerable<ImageData> images = LoadImagesFromDirectory(folder: workspaceRelativePath);
+        IEnumerable<ImageData> images = LoadImagesFromDirectory(workspacePath);
 
         IDataView imageData = mlContext.Data.LoadFromEnumerable(images);
 
@@ -53,7 +38,7 @@ public static class TrainWorkflow
                 outputColumnName: "LabelAsKey")
             .Append(mlContext.Transforms.LoadRawImageBytes(
                 outputColumnName: "Image",
-                imageFolder: workspaceRelativePath,
+                imageFolder: workspacePath,
                 inputColumnName: "ImagePath"));
 
         IDataView preProcessedData = preprocessingPipeline
@@ -143,6 +128,6 @@ public static class TrainWorkflow
 
         ClassifyImages(mlContext, testSet, trainedModel);
 
-        mlContext.Model.Save(trainedModel, trainSet.Schema, Path.Combine(workspaceRelativePath, "model.zip"));
+        mlContext.Model.Save(trainedModel, trainSet.Schema, Path.Combine(workspacePath, "model.zip"));
     }
 }

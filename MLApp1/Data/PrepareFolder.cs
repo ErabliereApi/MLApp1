@@ -24,14 +24,14 @@ public class PrepareFolder
         .WithoutInvalidFileSystemCharacter()
         .WithLabelMapping(new Dictionary<string, string>
         {
-            { "CAML",    "CAM1" },
-            { "CAMa ET", "CAM3" },
-            { "CAMs",    "CAM4" },
-            { "CAM4 °",  "CAM4" }
+            { "CAML", "CAM1" },
+            { "CAME", "CAM3" },
+            { "CAMS", "CAM3" }
 
         }).WithLabelMapping(new Dictionary<string, string>
         {
             { "CAM1", "Dompeux" },
+            { "CAM2", "Bassin" },
             { "CAM3", "Bassin" },
             { "CAM4", "Bassin" },
         });

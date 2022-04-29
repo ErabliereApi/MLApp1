@@ -3,11 +3,8 @@ using MLApp1;
 
 public class ClassifyWorkflow
 {
-    public static void ClassifyWorkflowWorkspace()
+    public static void ClassifyWorkflowWorkspace(string projectDirectory, string workspaceRelativePath)
     {
-        var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
-        var workspaceRelativePath = Path.Combine(projectDirectory, "workspace");
-
         MLContext mlContext = new MLContext();
 
         IEnumerable<ImageData> LoadImagesFromDirectory(string folder)
@@ -16,6 +13,7 @@ public class ClassifyWorkflow
                      .Where(d => !(d.EndsWith("Dompeux") || d.EndsWith("Bassin")))
                      .SelectMany(folder => Directory.EnumerateFiles(folder))
                      .Union(Directory.EnumerateFiles(folder))
+                     .Where(f => Path.GetExtension(f) != ".zip")
                      .Select(file =>
                      {
                          return new ImageData
@@ -46,7 +44,17 @@ public class ClassifyWorkflow
 
             var prediction = predictionEngine.Predict(modelInput);
 
-            Console.WriteLine(prediction.PredictedLabel + " " + prediction.ImagePath);
+            File.Move(file.ImagePath,
+                Path.Combine(workspaceRelativePath, prediction.PredictedLabel, Path.GetFileName(modelInput.ImagePath)));
+
+            var directory = Path.GetDirectoryName(file.ImagePath);
+
+            if (directory != null &&
+                directory != workspaceRelativePath && 
+                Directory.EnumerateFiles(directory).Any() == false)
+            {
+                Directory.Delete(directory, true);
+            }
         }
     }
 }
