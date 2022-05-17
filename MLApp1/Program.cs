@@ -8,7 +8,7 @@ var options = new MLAppOptions
     ProjectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../")),
 };
 
-options.WorkspacePath = Path.Combine(options.ProjectDirectory, "workspace");
+options.WorkspacePath = Path.Combine(options.ProjectDirectory, "workspace", "erabliere");
 options.AssetsRelativePath = Path.Combine("V:\\");
 options.Temp = Path.Combine(options.ProjectDirectory, "Temp");
 
@@ -19,7 +19,7 @@ if (Directory.Exists(options.Temp))
     Directory.Delete(options.Temp, true);
 }
 
-do
+while (true)
 {
     Console.WriteLine("Welcome to MLApp1.");
     Console.WriteLine("1. Prepare folder");
@@ -66,16 +66,15 @@ do
     {
         Console.Error.WriteLine(e);
     }
-    
-} while (true);
+}
 
 void EditOptions(MLAppOptions options)
 {
-    do
+    while (true)
     {
-        Console.WriteLine("1. ProjectDirectory" + options.ProjectDirectory);
-        Console.WriteLine("2. WorkspacePath" + options.WorkspacePath);
-        Console.WriteLine("3. AssertsRelativePath" + options.AssetsRelativePath);
+        Console.WriteLine("1. ProjectDirectory: " + options.ProjectDirectory);
+        Console.WriteLine("2. WorkspacePath: " + options.WorkspacePath);
+        Console.WriteLine("3. AssertsRelativePath: " + options.AssetsRelativePath);
         Console.WriteLine("0. Back to main menu");
 
         Console.WriteLine("Choose a options to edit");
@@ -106,5 +105,5 @@ void EditOptions(MLAppOptions options)
                 Console.WriteLine("Unkown choice");
                 break;
         }
-    } while (true);
+    }
 }

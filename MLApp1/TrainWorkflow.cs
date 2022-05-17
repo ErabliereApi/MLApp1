@@ -13,7 +13,6 @@ public static class TrainWorkflow
         IEnumerable<ImageData> LoadImagesFromDirectory(string folder)
         {
             return Directory.EnumerateDirectories(folder)
-                     .Where(d => d.EndsWith("Dompeux") || d.EndsWith("Bassin"))
                      .SelectMany(folder => Directory.EnumerateFiles(folder))
                      .Select(file =>
                      {
