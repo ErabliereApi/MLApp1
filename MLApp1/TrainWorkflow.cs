@@ -128,5 +128,7 @@ public static class TrainWorkflow
         ClassifyImages(mlContext, testSet, trainedModel);
 
         mlContext.Model.Save(trainedModel, trainSet.Schema, Path.Combine(workspacePath, "model.zip"));
+
+        ONNXUtil.SaveModelAsONNX(workspacePath, trainSet, mlContext);
     }
 }

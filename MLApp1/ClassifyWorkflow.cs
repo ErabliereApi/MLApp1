@@ -1,8 +1,6 @@
 ﻿using Microsoft.ML;
 using MLApp1;
 using MLApp1.Extension;
-using MLApp1.Labeller;
-using System.Collections.Generic;
 
 public class ClassifyWorkflow
 {
@@ -22,7 +20,7 @@ public class ClassifyWorkflow
                          return new ImageData
                          {
                              ImagePath = file,
-                             Label = ""
+                             Label = file[0].ToString()
                          };
                      });
         }
@@ -40,12 +38,14 @@ public class ClassifyWorkflow
             var modelInput = new ModelInput
             {
                 Image = File.ReadAllBytes(file.ImagePath),
-                Label = "",
+                Label = file.Label,
                 ImagePath = file.ImagePath,
                 LabelAsKey = default
             };
 
             var prediction = predictionEngine.Predict(modelInput);
+
+            Directory.CreateDirectory(Path.Combine(workspaceRelativePath, prediction.PredictedLabel));
 
             File.Move(file.ImagePath,
                 Path.Combine(workspaceRelativePath, prediction.PredictedLabel, Path.GetFileName(modelInput.ImagePath)));
@@ -83,7 +83,7 @@ public class ClassifyWorkflow
                          return new ImageData
                          {
                              ImagePath = file,
-                             Label = ""
+                             Label = file[0].ToString()
                          };
                      });
         }
@@ -116,7 +116,7 @@ public class ClassifyWorkflow
 
                     var predication = predictionEngine.Predict(new ModelInput
                     {
-                        ImagePath = image,
+                        ImagePath = image
                     });
 
                     var label = predication.PredictedLabel;
@@ -130,6 +130,8 @@ public class ClassifyWorkflow
                     Directory.CreateDirectory(labelFolder);
 
                     var destination = Path.Combine(labelFolder, Path.GetDirectoryName(file)?.Split('\\').Last() + '.' + Path.GetFileNameWithoutExtension(image) + '.' + count++ + ".jpg");
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(destination) ?? "");
 
                     Console.WriteLine($"{image} moving to destination {destination}");
                     File.Move(image, destination, true);
