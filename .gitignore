@@ -351,3 +351,4 @@ MigrationBackup/
 
 MLApp1/workspace/**/model.zip
 MLApp1/workspace/recycling/
+MLApp1/workspace/test_recycling/

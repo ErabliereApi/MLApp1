@@ -41,7 +41,7 @@ while (true)
                 await PrepareFolder.PreparerFolderAsync(options.AssetsRelativePath, options.WorkspacePath, 5000);
                 break;
             case "2":
-                await TrainWorkflow.TrainWorkflowAsync(options.WorkspacePath);
+                TrainWorkflow.TrainWorkflowAsync(options.WorkspacePath);
                 break;
             case "3":
                 ClassifyWorkflow.ClassifyWorkflowWorkspace(options.ProjectDirectory, options.WorkspacePath);

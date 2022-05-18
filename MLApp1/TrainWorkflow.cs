@@ -1,12 +1,11 @@
 ﻿using Microsoft.ML.Vision;
 using Microsoft.ML;
-using MLApp1.Data;
 using static Microsoft.ML.DataOperationsCatalog;
 
 namespace MLApp1;
 public static class TrainWorkflow
 {
-    public static async Task TrainWorkflowAsync(string workspacePath)
+    public static void TrainWorkflowAsync(string workspacePath)
     {
         MLContext mlContext = new MLContext();
 
@@ -129,6 +128,6 @@ public static class TrainWorkflow
 
         mlContext.Model.Save(trainedModel, trainSet.Schema, Path.Combine(workspacePath, "model.zip"));
 
-        ONNXUtil.SaveModelAsONNX(workspacePath, trainSet, mlContext);
+        ONNXUtil.SaveModelAsONNX(workspacePath, trainedModel, trainSet, mlContext);
     }
 }
