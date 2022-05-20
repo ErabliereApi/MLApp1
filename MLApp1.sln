@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLApp1", "MLApp1\MLApp1.csproj", "{6D6E80C0-9A29-4B4C-8F82-B3CD2BFEA218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabellerImage.Test", "LabellerImage.Test\LabellerImage.Test.csproj", "{F544046D-EBB3-4AF4-9B4D-6C83ABD75B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabellerImage.Test", "LabellerImage.Test\LabellerImage.Test.csproj", "{F544046D-EBB3-4AF4-9B4D-6C83ABD75B49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

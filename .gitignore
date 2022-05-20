@@ -350,5 +350,7 @@ MigrationBackup/
 .ionide/
 
 MLApp1/workspace/**/model.zip
+MLApp1/workspace/**/onnx_model.onnx
 MLApp1/workspace/recycling/
+MLApp1/workspace/recycling_short/
 MLApp1/workspace/test_recycling/

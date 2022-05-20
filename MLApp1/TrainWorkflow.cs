@@ -50,8 +50,7 @@ public static class TrainWorkflow
         IDataView validationSet = validationTestSplit.TrainSet;
         IDataView testSet = validationTestSplit.TestSet;
 
-        void PrintPreviewRows(IDataView trainSetDV,
-                    IDataView testSetDV)
+        void PrintPreviewRows(IDataView trainSetDV, IDataView testSetDV)
         {
             var trainSet = mlContext.Data.CreateEnumerable<ModelInput>(trainSetDV, true);
 

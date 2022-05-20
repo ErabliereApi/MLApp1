@@ -1,6 +1,6 @@
 # MLApp1
 
-My experimentation using ML.Net to classify images of a camera system used in mapple syrop farm.
+My experimentation using ML.Net to classify images of a camera system used in maple syrup farm.
 
 ## Setup
 
