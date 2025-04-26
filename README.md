@@ -30,8 +30,34 @@ And add this line
 
 ### Configure the API url
 
-To configure the API url to match your environment change the static variable in ```MLApp1/Config.cs```.
+To configure the API url to match your environment change the static class in ```MLApp1/Config.cs```.
 
 ## Setup the data source
 
-This app analyse images from DAT file on a hard drive mount on V:. Those DAT file was saved there by a Smonet camera system so the folder structure and the file name is as store by the camera recorder.
+This app analyse images from DAT file on a hard drive mount on D:. Those DAT file was saved there by a Smonet camera system so the folder structure and the file name is as store by the camera recorder.
+
+## Traning workflow
+
+1. Run the MlApp1 projet using dotnet run. It will open a console app with the following choices.
+
+```
+1. Prepare folder
+2. Train a model
+3. Classify images
+4. Classify image folder using image2text api
+5. Classify image using ML.Net
+6. Edit options
+0. Quit
+```
+
+2. Choose 1 to prepare the folder. It will create a folder structure and copy the images from the DAT file to the folder structure. The folder structure is as follow:
+
+The algorithm will proceded as follow:
+
+1. In for loops
+2. Parse a .dat file on the external hard drive
+3. Getting images from the .dat file and storing then into a Temp folder inside the bin folder
+4. Classify the images using the image2text api
+5. Base on the classification result, move the images to the corresponding folder in the workspace folder
+6. Images in the temp folder are deleted
+

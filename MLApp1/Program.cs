@@ -9,7 +9,7 @@ var options = new MLAppOptions
 };
 
 options.WorkspacePath = Path.Combine(options.ProjectDirectory, "workspace", "erabliere");
-options.AssetsRelativePath = Path.Combine("V:\\");
+options.AssetsRelativePath = Path.Combine(@"D:\");
 options.Temp = Path.Combine(options.ProjectDirectory, "Temp");
 
 Directory.CreateDirectory(options.WorkspacePath);

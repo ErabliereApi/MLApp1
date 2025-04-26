@@ -36,15 +36,6 @@ public class FromCameraName : ILabeller
 
         var t = s.Trim().ToUpper();
 
-        //try
-        //{
-        //    subImage.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Temp", Guid.NewGuid().ToString() + ".jpg"));
-        //}
-        //catch (Exception ex)
-        //{
-        //    Console.Error.WriteLine(ex);
-        //}
-
         return t;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MLApp1.Data;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,13 +10,13 @@ public class DATParserTest : IDisposable
 {
     public void Dispose()
     {
-        Directory.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\Temp", true);
+        Directory.Delete(AppDomain.CurrentDomain.BaseDirectory + @"\Temp", true);
     }
 
     [Fact]
     public async Task TestGetCountImage()
     {
-        var parser = new DATParser(AppDomain.CurrentDomain.BaseDirectory + "\\Videos\\file0000.dat");
+        var parser = new DatParserV2(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\file0000.dat");
 
         var images = await parser.EnumeratesImages();
 

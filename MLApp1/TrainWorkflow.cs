@@ -79,7 +79,7 @@ public static class TrainWorkflow
             LabelColumnName = "LabelAsKey",
             ValidationSet = validationSet,
             Arch = ImageClassificationTrainer.Architecture.ResnetV2101,
-            MetricsCallback = (metrics) => Console.WriteLine(metrics),
+            MetricsCallback = Console.WriteLine,
             TestOnTrainSet = false,
             ReuseTrainSetBottleneckCachedValues = true,
             ReuseValidationSetBottleneckCachedValues = true,

@@ -1,5 +1,6 @@
 ﻿using Microsoft.ML;
 using MLApp1;
+using MLApp1.Data;
 using MLApp1.Extension;
 
 public class ClassifyWorkflow
@@ -104,7 +105,7 @@ public class ClassifyWorkflow
 
             foreach (var file in files)
             {
-                var disposable = new DATParser(file);
+                var disposable = new DatParserV2(file);
 
                 var images = (await disposable.EnumeratesImages(10)).ToArray();
 
