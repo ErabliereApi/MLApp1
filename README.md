@@ -61,3 +61,6 @@ The algorithm will proceded as follow:
 5. Base on the classification result, move the images to the corresponding folder in the workspace folder
 6. Images in the temp folder are deleted
 
+## Next
+
+Even if the consol app allow to Train a model, classify images and more. The installation process is difficult and windows. See kaggle dataset for better model and training process. [MLApp1 Dataset](https://www.kaggle.com/datasets/freddycoder/rablire-saintalfred-camera-2022/code?datasetId=2168739)
